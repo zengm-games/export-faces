@@ -1,0 +1,19 @@
+{
+  "name": "@zengm-games/export-faces",
+  "version": "1.0.0",
+  "description": "",
+  "bin": "cli.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "facesjs": "^4.2.2",
+    "sharp": "^0.33.5",
+    "stream-json": "^1.9.1",
+    "unused-filename": "^4.0.1"
+  },
+  "type": "module",
+  "files": [
+    "cli.js"
+  ]
+}
