@@ -41,7 +41,7 @@ const teams = [];
 const processPlayer = async (p) => {
     let tid;
     if (season === "current") {
-        if (p.tid < 0) {
+        if (p.tid < -2) {
             return;
         }
         tid = p.tid;
@@ -58,7 +58,24 @@ const processPlayer = async (p) => {
         return;
     }
 
-    const t = teams[tid];
+    let t;
+    if (teams[tid]) {
+        t = teams[tid];
+    } else if (tid === -1) {
+        t = {
+            abbrev: "FA",
+            colors: ["#000", "#00F", "#F00"],
+            jersey: "jersey3",
+        };
+    } else if (tid === -2) {
+        t = {
+            abbrev: `DP${p.draft.year}`,
+            colors: ["#000", "#00F", "#F00"],
+            jersey: "jersey3",
+        };
+    } else {
+        throw new Error(`Invalid tid ${tid}`)
+    }
 
     const svg = faceToSvgString(p.face, {
         teamColors: t.colors,
